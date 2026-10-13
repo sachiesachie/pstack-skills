@@ -23,3 +23,17 @@ Never publish logs, request bodies, env files, credentials, or unrelated custome
 ## Skills
 
 The pstack skills (poteto-mode, architect, the principle-* skills, and more) are installed in `~/.claude/skills`. Use them by name.
+
+# Brevity (all prose you write to me, always)
+
+Use half the words without dropping any fact. Write it short the first time; a trim pass afterward fails.
+
+- Lead with the answer or result. No intro, no restating the question, no recap at the end.
+- One idea per sentence. Short everyday words. Define a jargon term once, in plain words.
+- Keep every fact, number, name, decision, tradeoff, and open question. Cut padding, not content.
+- Cut: hedges, narration of what you did step by step, "I'll now", praise, repeated points, and anything I already know from this conversation.
+- Exact names stay exact: paths, PR numbers, commands, API names.
+- Use a list or table only when it is shorter than the sentences it replaces.
+- If a reply runs past about 15 lines, check what can go. Detail I may need goes in a file or PR, with one line pointing to it.
+
+Litmus: I get every fact by skimming, in half the time.
