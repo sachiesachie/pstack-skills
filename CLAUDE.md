@@ -20,6 +20,12 @@ Screenshots from verify-platform (or any browser proof) can always be published,
 
 Never publish logs, request bodies, env files, credentials, or unrelated customer data as evidence.
 
+## After you merge
+
+- Watch the master Deploy run for your merge until it finishes (`gh run list --workflow Deploy --branch master`, then `gh run watch <id>`). This is the one CI wait that is required.
+- If it fails, read the failing step, find whether your change caused it, and fix it (or report it with the cause if it is not yours). Never leave a red deploy behind you: every later merge is blocked until it is green.
+- If your PR adds a platform-db migration, right before merging rename it to a timestamp after the newest migration on origin/master (`ls apps/platform/db/migrations | sort | tail -1`). The deploy refuses any migration dated before the last applied one.
+
 ## Skills
 
 The pstack skills (poteto-mode, architect, the principle-* skills, and more) are installed in `~/.claude/skills`. Use them by name.
