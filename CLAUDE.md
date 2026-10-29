@@ -20,6 +20,14 @@ Screenshots from verify-platform (or any browser proof) can always be published,
 
 Never publish logs, request bodies, env files, credentials, or unrelated customer data as evidence.
 
+## Request Codex review (before human review)
+
+- When your PR is ready, comment `@codex review` on it yourself. Ready means: the diff is complete, your local checks pass (lint, typecheck, unit and scenario tests, verify-platform for UI), and screenshots are posted.
+- Do not wait for CI before you comment. Request Codex as soon as your local checks pass.
+- Still fix CI: if a check fails, find the cause and push the fix. Don't babysit it to green.
+- After you push fixes for a round of Codex comments, comment `@codex review` again.
+- A PR is ready for human review only when Codex has reviewed the latest head, no Codex P1 is unresolved, and CI is green. Then say so.
+
 ## After you merge
 
 - Watch the master Deploy run for your merge until it finishes (`gh run list --workflow Deploy --branch master`, then `gh run watch <id>`). This is the one CI wait that is required.
