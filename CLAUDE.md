@@ -28,7 +28,7 @@ Run the narrowest check that can catch a failure in what you changed. Before any
 | Copy, labels, docs, comments | lint and format on the touched files; a screenshot of the changed screen if users see it |
 | Logic inside one module | that module's unit tests, typecheck |
 | UI behavior | typecheck, verify-platform for that flow |
-| DB, queue, provider, or another service; concurrency | the one scenario that covers it |
+| DB, queue, provider, or another service; concurrency | every scenario that covers it; a long run is fine for a significant change |
 
 - Re-run a scenario only if a commit since its last pass changed code that scenario runs. Rebases, copy edits and migration renames don't count. Cite the SHA of the last passing run instead.
 - When you're done, list what you ran, and for each skipped check the reason it doesn't apply.
