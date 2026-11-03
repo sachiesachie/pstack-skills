@@ -20,9 +20,22 @@ Screenshots from verify-platform (or any browser proof) can always be published,
 
 Never publish logs, request bodies, env files, credentials, or unrelated customer data as evidence.
 
+## Pick checks by what changed
+Run the narrowest check that can catch a failure in what you changed. Before any check that takes over 2 minutes, name the failure it would catch in this diff. If you can't name one, skip it and say why in the PR.
+
+| What changed | Run |
+|---|---|
+| Copy, labels, docs, comments | lint and format on the touched files; a screenshot of the changed screen if users see it |
+| Logic inside one module | that module's unit tests, typecheck |
+| UI behavior | typecheck, verify-platform for that flow |
+| DB, queue, provider, or another service; concurrency | the one scenario that covers it |
+
+- Re-run a scenario only if a commit since its last pass changed code that scenario runs. Rebases, copy edits and migration renames don't count. Cite the SHA of the last passing run instead.
+- When you're done, list what you ran, and for each skipped check the reason it doesn't apply.
+
 ## Request Codex review (before human review)
 
-- When your PR is ready, comment `@codex review` on it yourself. Ready means: the diff is complete, your local checks pass (lint, typecheck, unit and scenario tests, verify-platform for UI), and screenshots are posted.
+- When your PR is ready, comment `@codex review` on it yourself. Ready means: the diff is complete, the checks picked under "Pick checks by what changed" pass, and screenshots are posted for any change users see.
 - Do not wait for CI before you comment. Request Codex as soon as your local checks pass.
 - Still fix CI: if a check fails, find the cause and push the fix. Don't babysit it to green.
 - After you push fixes for a round of Codex comments, comment `@codex review` again.
