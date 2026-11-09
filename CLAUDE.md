@@ -38,7 +38,7 @@ Run the narrowest check that can catch a failure in what you changed. Before any
 - When your PR is ready, comment `@codex review` on it yourself. Ready means: the diff is complete, the checks picked under "Pick checks by what changed" pass, and screenshots are posted for any change users see.
 - Do not wait for CI before you comment. Request Codex as soon as your local checks pass.
 - Still fix CI: if a check fails, find the cause and push the fix. Don't babysit it to green.
-- After you push fixes for a round of Codex comments, comment `@codex review` again.
+- After you push fixes for a round of Codex comments, comment `@codex review` again, up to 3 rounds per PR. A round is one Codex review that left comments you fixed. After the third round, stop tagging Codex. Fix any remaining P1 yourself, then tell me the PR has used its 3 rounds and what Codex last flagged.
 - A PR is ready for human review only when Codex has reviewed the latest head, no Codex P1 is unresolved, and CI is green. Then say so.
 
 ## After you merge
