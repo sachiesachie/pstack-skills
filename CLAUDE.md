@@ -40,6 +40,18 @@ Run the narrowest check that can catch a failure in what you changed. Before any
 - Still fix CI: if a check fails, find the cause and push the fix. Don't babysit it to green.
 - After you push fixes for a round of Codex comments, comment `@codex review` again, up to 3 rounds per PR. A round is one Codex review that left comments you fixed. After the third round, stop tagging Codex. Fix any remaining P1 yourself, then tell me the PR has used its 3 rounds and what Codex last flagged.
 - A PR is ready for human review only when Codex has reviewed the latest head, no Codex P1 is unresolved, and CI is green. Then say so.
+- If you pushed after your third round, Codex hasn't reviewed the head. Then the PR is ready once CI is green and you have fixed every Codex P1 you know of. Tell me, and I decide whether to tag Codex again. Jev won't merge it until Codex reviews the head.
+
+## Jev auto-merge
+- Add the `jev:automerge` label once Codex comes back clean on the head commit (no P0, P1 or unrated finding): `gh pr edit <n> --add-label "jev:automerge"`. Jev merges after CI is green, Codex has reviewed the head, and its own checks pass.
+- Stacked and draft PRs can carry the label. Jev starts once the PR is marked ready and based on `master`.
+- Skip the label and say why if any of these hold:
+  - the diff touches a path Jev never merges: `.github/`, `.husky/`, `apps/terraform/`, migrations, `*.sql`, `apps/platform/db/`, `wrangler*`, or `packages/`
+  - the diff is over 30 files or 1,000 changed lines
+  - the PR needs a product or design call from me
+  - a human reviewer has an open thread
+- If Jev posts a stop, read why. Fix it if it's yours; otherwise tell me. Don't remove and re-add the label to force a retry.
+- After it merges, watch the master deploy like any other merge.
 
 ## After you merge
 
